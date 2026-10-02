@@ -1,0 +1,489 @@
+// =====================================================================
+// Кабинеты с боковым меню: производитель, курьер, админ/оператор,
+// а также меню личного кабинета покупателя
+// =====================================================================
+
+.dashboard-body {
+    background: #f3f5f2;
+}
+
+.dash-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dash-sidebar {
+    width: 264px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1px solid var(--lm-border-light);
+
+    @include media-breakpoint-up(lg) {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .offcanvas-body {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        flex: 1;
+        min-height: 0;
+    }
+}
+
+.dash-brand {
+    display: flex;
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--lm-border-light);
+
+    .brand {
+        margin: 0;
+    }
+}
+
+.dash-role {
+    margin: 1rem 1.25rem .25rem;
+    padding: .6rem .8rem;
+    border-radius: .75rem;
+    background: var(--lm-primary-softer);
+    border: 1px solid var(--lm-primary-soft);
+    font-size: .8rem;
+
+    strong {
+        display: block;
+        font-size: .875rem;
+        color: $headings-color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.dash-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: .75rem .85rem;
+
+    .dash-nav__label {
+        font-size: .7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: var(--lm-muted);
+        padding: .9rem .6rem .4rem;
+    }
+}
+
+.dash-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .62rem .75rem;
+    border-radius: .7rem;
+    font-weight: 600;
+    font-size: .9rem;
+    color: #49514d;
+    transition: background-color .15s ease, color .15s ease;
+
+    i {
+        font-size: 1.1rem;
+        color: var(--lm-muted);
+        transition: color .15s ease;
+    }
+
+    .badge {
+        margin-left: auto;
+    }
+
+    &:hover {
+        background: #f3f5f2;
+        color: $headings-color;
+    }
+
+    &.active {
+        background: var(--lm-primary-soft);
+        color: var(--lm-primary-dark);
+
+        i {
+            color: var(--lm-primary);
+        }
+    }
+
+    & + & {
+        margin-top: .15rem;
+    }
+}
+
+.dash-sidebar-footer {
+    padding: .85rem;
+    border-top: 1px solid var(--lm-border-light);
+}
+
+.dash-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.dash-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    min-height: 64px;
+    padding: .5rem 1.5rem;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--lm-border-light);
+
+    .dash-topbar__title {
+        font-weight: 700;
+        font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    @include media-breakpoint-down(md) {
+        padding: .5rem 1rem;
+    }
+}
+
+.dash-content {
+    flex: 1;
+    padding: 1.5rem;
+
+    @include media-breakpoint-down(md) {
+        padding: 1rem;
+    }
+}
+
+.dash-page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem 1rem;
+    margin-bottom: 1.25rem;
+
+    h1 {
+        font-size: 1.5rem;
+        margin: 0;
+
+        @include media-breakpoint-down(md) {
+            font-size: 1.25rem;
+        }
+    }
+
+    p {
+        margin: .2rem 0 0;
+        color: $body-secondary-color;
+        font-size: .9rem;
+    }
+}
+
+// Меню личного кабинета покупателя
+.account-nav {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: var(--lm-radius);
+    padding: .75rem;
+    box-shadow: $box-shadow-sm;
+
+    @include media-breakpoint-up(lg) {
+        position: sticky;
+        top: calc(var(--lm-header-height) + 1rem);
+    }
+
+    .account-nav__user {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        padding: .5rem .5rem 1rem;
+        margin-bottom: .5rem;
+        border-bottom: 1px solid var(--lm-border-light);
+    }
+
+    @include media-breakpoint-down(lg) {
+        .account-nav__links {
+            display: flex;
+            overflow-x: auto;
+            gap: .35rem;
+            scrollbar-width: none;
+
+            .dash-link {
+                white-space: nowrap;
+                margin: 0;
+            }
+        }
+    }
+}
+
+// Таблицы в панелях
+.table-card {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: var(--lm-radius);
+    box-shadow: $box-shadow-sm;
+    overflow: hidden;
+
+    .table {
+        margin: 0;
+        vertical-align: middle;
+
+        > thead th {
+            background: #f8f9f7;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: var(--lm-muted);
+            border-bottom-width: 1px;
+            white-space: nowrap;
+        }
+
+        > tbody tr {
+            transition: background-color .15s ease;
+
+            &:hover {
+                background: #fafbf9;
+            }
+
+            &:last-child td {
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .table-card__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: .75rem;
+        padding: 1rem 1.15rem;
+        border-bottom: 1px solid var(--lm-border-light);
+
+        h2 {
+            font-size: 1.05rem;
+            margin: 0;
+        }
+    }
+
+    .table-card__foot {
+        padding: .85rem 1.15rem;
+        border-top: 1px solid var(--lm-border-light);
+
+        .pagination {
+            margin: 0;
+        }
+    }
+}
+
+.table-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: .6rem;
+    object-fit: cover;
+    background: #f3f5f2;
+    flex-shrink: 0;
+}
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    align-items: center;
+
+    .form-control,
+    .form-select {
+        width: auto;
+        min-width: 160px;
+        flex: 1 1 160px;
+        max-width: 280px;
+    }
+
+    @include media-breakpoint-down(sm) {
+        .form-control,
+        .form-select {
+            max-width: none;
+        }
+    }
+}
+
+.status-tabs {
+    display: flex;
+    gap: .35rem;
+    overflow-x: auto;
+    padding-bottom: .15rem;
+    margin-bottom: 1rem;
+    scrollbar-width: none;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: .4rem;
+        padding: .45rem .9rem;
+        border-radius: 50rem;
+        background: #fff;
+        border: 1px solid var(--lm-border-light);
+        font-weight: 600;
+        font-size: .85rem;
+        color: $body-secondary-color;
+        white-space: nowrap;
+        transition: all .15s ease;
+
+        .badge {
+            font-size: .7rem;
+        }
+
+        &:hover {
+            color: $headings-color;
+            border-color: #d6dbd4;
+        }
+
+        &.active {
+            background: $headings-color;
+            border-color: $headings-color;
+            color: #fff;
+
+            .badge {
+                background: rgba(255, 255, 255, .2) !important;
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+.chart-box {
+    position: relative;
+    height: 280px;
+
+    &.chart-box-sm {
+        height: 240px;
+    }
+}
+
+// Карточки доставок курьера
+.delivery-card {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: var(--lm-radius);
+    padding: 1.15rem;
+    box-shadow: $box-shadow-sm;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .delivery-card__route {
+        position: relative;
+        padding-left: 1.6rem;
+        margin: .9rem 0;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: .45rem;
+            top: .8rem;
+            bottom: .8rem;
+            border-left: 2px dashed #cfd6cf;
+        }
+    }
+
+    .route-point {
+        position: relative;
+        font-size: .875rem;
+
+        & + .route-point {
+            margin-top: .75rem;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: -1.45rem;
+            top: .3rem;
+            width: .75rem;
+            height: .75rem;
+            border-radius: 50%;
+            background: #fff;
+            border: 3px solid var(--lm-primary);
+        }
+
+        &.route-point-end::before {
+            background: var(--lm-primary);
+        }
+
+        small {
+            display: block;
+            color: var(--lm-muted);
+            font-size: .75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+        }
+    }
+}
+
+// Таймлайн статусов заказа
+.order-timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+        position: relative;
+        padding: 0 0 1rem 1.75rem;
+        font-size: .875rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: .35rem;
+            top: .35rem;
+            width: .7rem;
+            height: .7rem;
+            border-radius: 50%;
+            background: #d5dad4;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: .66rem;
+            top: 1.15rem;
+            bottom: -.1rem;
+            border-left: 2px solid #e3e6e0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+
+        &.done::before {
+            background: var(--lm-primary);
+            box-shadow: 0 0 0 4px var(--lm-primary-soft);
+        }
+
+        &.cancelled::before {
+            background: $danger;
+            box-shadow: 0 0 0 4px rgba($danger, .12);
+        }
+
+        small {
+            display: block;
+            color: var(--lm-muted);
+        }
+    }
+}

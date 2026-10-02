@@ -1,0 +1,99 @@
+// =====================================================================
+// Переменные Bootstrap: собственная палитра «локальный маркетплейс».
+// Один акцентный цвет (спокойный зелёный) + нейтральные оттенки.
+// =====================================================================
+
+$primary: #2f7a55;
+$secondary: #6b7470;
+$success: #2e8b57;
+$info: #3a7fc1;
+$warning: #e3a21a;
+$danger: #d2493f;
+$light: #f6f7f4;
+$dark: #22272b;
+
+$body-bg: #f6f7f4;
+$body-color: #22272b;
+$body-secondary-color: #5f676e;
+$border-color: #e3e6e0;
+$headings-color: #1b1f22;
+
+$font-family-sans-serif: 'Manrope Variable', 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 0.9375rem;
+$font-weight-bold: 700;
+$headings-font-weight: 700;
+$headings-margin-bottom: .6rem;
+$lead-font-weight: 400;
+$small-font-size: .8125rem;
+
+$border-radius-sm: .5rem;
+$border-radius: .625rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.25rem;
+$border-radius-xxl: 1.75rem;
+
+$box-shadow-sm: 0 1px 2px rgba(17, 24, 39, .05);
+$box-shadow: 0 6px 20px rgba(17, 24, 39, .06);
+$box-shadow-lg: 0 16px 40px rgba(17, 24, 39, .10);
+
+$link-decoration: none;
+$link-hover-decoration: none;
+
+$enable-negative-margins: true;
+$enable-smooth-scroll: false;
+
+// Кнопки и поля ввода
+$input-btn-padding-y: .6rem;
+$input-btn-padding-x: 1.1rem;
+$input-btn-focus-width: .2rem;
+$input-btn-focus-color-opacity: .18;
+$btn-font-weight: 600;
+$btn-padding-x-sm: .75rem;
+$btn-border-radius: .65rem;
+$btn-border-radius-sm: .55rem;
+$btn-border-radius-lg: .8rem;
+$input-border-color: #dde1db;
+$input-placeholder-color: #9aa19c;
+$input-border-radius: .65rem;
+$input-border-radius-lg: .8rem;
+$form-label-font-weight: 600;
+$form-label-margin-bottom: .35rem;
+$form-check-input-border: 1px solid #c9cfc8;
+$form-select-border-radius: .65rem;
+
+// Карточки
+$card-border-radius: 1rem;
+$card-border-color: #eceee9;
+$card-cap-bg: transparent;
+$card-spacer-y: 1.25rem;
+$card-spacer-x: 1.25rem;
+
+// Выпадающие меню, модальные окна, тосты
+$dropdown-border-color: #eceee9;
+$dropdown-border-radius: .85rem;
+$dropdown-box-shadow: $box-shadow-lg;
+$dropdown-padding-y: .4rem;
+$dropdown-item-padding-y: .5rem;
+$dropdown-item-padding-x: 1rem;
+$dropdown-link-active-bg: #e8f2ec;
+$dropdown-link-active-color: $primary;
+$modal-content-border-radius: 1.1rem;
+$modal-content-border-width: 0;
+$modal-backdrop-opacity: .4;
+$toast-border-radius: .85rem;
+$toast-max-width: 380px;
+
+// Таблицы, бейджи, пагинация
+$table-cell-padding-y: .8rem;
+$table-cell-padding-x: .9rem;
+$table-th-font-weight: 600;
+$badge-font-weight: 600;
+$badge-padding-y: .4em;
+$badge-padding-x: .7em;
+$pagination-border-radius: .6rem;
+$pagination-border-color: #e3e6e0;
+$breadcrumb-divider: quote("›");
+$breadcrumb-margin-bottom: 0;
+$nav-pills-border-radius: .65rem;
+$offcanvas-border-color: #eceee9;
+$progress-border-radius: 50rem;

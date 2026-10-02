@@ -1,0 +1,337 @@
+// =====================================================================
+// Кнопки и формы
+// =====================================================================
+
+.btn {
+    transition: color .15s ease, background-color .15s ease, border-color .15s ease,
+        box-shadow .2s ease, transform .15s var(--lm-ease);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .45rem;
+
+    &:active {
+        transform: scale(.97);
+    }
+
+    .bi {
+        line-height: 1;
+    }
+}
+
+.btn-primary {
+    box-shadow: 0 4px 12px rgba($primary, .22);
+
+    &:hover {
+        box-shadow: 0 6px 16px rgba($primary, .3);
+        transform: translateY(-1px);
+    }
+}
+
+.btn-soft {
+    background: var(--lm-primary-soft);
+    color: var(--lm-primary-dark);
+    border: 1px solid transparent;
+
+    &:hover,
+    &:focus-visible {
+        background: #d9eadf;
+        color: var(--lm-primary-dark);
+    }
+}
+
+.btn-light {
+    background: #fff;
+    border-color: var(--lm-border);
+    color: $body-color;
+
+    &:hover {
+        background: #f3f5f2;
+        border-color: #d6dbd4;
+    }
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: #4d5551;
+    --bs-btn-border-color: #d7dcd5;
+    --bs-btn-hover-bg: #f1f3f0;
+    --bs-btn-hover-color: #22272b;
+    --bs-btn-hover-border-color: #c9cfc8;
+    --bs-btn-active-bg: #e9ece8;
+    --bs-btn-active-color: #22272b;
+    --bs-btn-active-border-color: #c9cfc8;
+}
+
+.btn-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border-radius: .75rem;
+    flex-shrink: 0;
+
+    &.btn-sm {
+        width: 2rem;
+        height: 2rem;
+        border-radius: .55rem;
+    }
+}
+
+// Состояние загрузки кнопки
+.btn.is-loading {
+    pointer-events: none;
+    opacity: .85;
+
+    .btn-spinner {
+        display: inline-block;
+    }
+}
+
+.btn-spinner {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: lm-spin .7s linear infinite;
+}
+
+.form-control,
+.form-select {
+    background-color: #fff;
+    transition: border-color .15s ease, box-shadow .15s ease;
+
+    &:hover:not(:focus):not(:disabled) {
+        border-color: #cdd3cb;
+    }
+}
+
+.form-control-lg,
+.form-select-lg {
+    font-size: 1rem;
+}
+
+.form-text {
+    color: var(--lm-muted);
+}
+
+.form-check-input {
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+.form-switch {
+    padding-left: 3em;
+
+    .form-check-input {
+        width: 2.4em;
+        height: 1.3em;
+        margin-top: .1em;
+        margin-left: -3em;
+    }
+}
+
+.input-group-text {
+    background: #f6f7f4;
+    border-color: $input-border-color;
+    color: $body-secondary-color;
+}
+
+// Карточки-варианты для radio (способ доставки, оплаты)
+.option-card {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 100%;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .option-card__body {
+        display: flex;
+        align-items: flex-start;
+        gap: .85rem;
+        height: 100%;
+        padding: 1rem 1.1rem;
+        border: 1.5px solid var(--lm-border);
+        border-radius: .9rem;
+        background: #fff;
+        transition: border-color .15s ease, background-color .15s ease, box-shadow .2s ease;
+    }
+
+    .option-card__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: .7rem;
+        display: grid;
+        place-items: center;
+        background: #f2f4f1;
+        color: $body-secondary-color;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+        transition: background-color .15s ease, color .15s ease;
+    }
+
+    .option-card__title {
+        font-weight: 700;
+        display: block;
+    }
+
+    .option-card__text {
+        font-size: .8125rem;
+        color: $body-secondary-color;
+    }
+
+    &:hover .option-card__body {
+        border-color: #c7d6cc;
+    }
+
+    input:checked + .option-card__body {
+        border-color: var(--lm-primary);
+        background: var(--lm-primary-softer);
+        box-shadow: 0 0 0 3px rgba($primary, .12);
+
+        .option-card__icon {
+            background: var(--lm-primary);
+            color: #fff;
+        }
+    }
+
+    input:focus-visible + .option-card__body {
+        box-shadow: 0 0 0 .2rem rgba($primary, .25);
+    }
+
+    input:disabled + .option-card__body {
+        opacity: .55;
+        cursor: not-allowed;
+    }
+}
+
+// Переключатель количества
+.qty-stepper {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--lm-border);
+    border-radius: .7rem;
+    background: #fff;
+    overflow: hidden;
+
+    button {
+        border: 0;
+        background: transparent;
+        width: 2.25rem;
+        height: 2.25rem;
+        color: $body-color;
+        transition: background-color .15s ease;
+
+        &:hover:not(:disabled) {
+            background: #f1f3f0;
+        }
+
+        &:disabled {
+            color: #c2c7c3;
+        }
+    }
+
+    input {
+        width: 2.75rem;
+        border: 0;
+        text-align: center;
+        font-weight: 700;
+        background: transparent;
+        padding: 0;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &.qty-stepper-lg button {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}
+
+// Звёздный выбор оценки в форме отзыва
+.rating-input {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    gap: .2rem;
+
+    input {
+        display: none;
+    }
+
+    label {
+        font-size: 1.6rem;
+        color: #d5d9d3;
+        cursor: pointer;
+        transition: color .15s ease, transform .15s var(--lm-ease);
+
+        &:hover {
+            transform: scale(1.12);
+        }
+    }
+
+    input:checked ~ label,
+    label:hover,
+    label:hover ~ label {
+        color: #f2b01e;
+    }
+}
+
+// Предпросмотр загружаемых изображений
+.upload-preview {
+    width: 120px;
+    height: 120px;
+    border-radius: .9rem;
+    border: 1.5px dashed #cdd3cb;
+    background: #f8f9f7 center/cover no-repeat;
+    display: grid;
+    place-items: center;
+    color: var(--lm-muted);
+    font-size: 1.75rem;
+    overflow: hidden;
+
+    &.has-image i {
+        display: none;
+    }
+}
+
+.thumb-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.thumb-item {
+    position: relative;
+    width: 96px;
+    height: 96px;
+    border-radius: .75rem;
+    overflow: hidden;
+    border: 1px solid var(--lm-border);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .thumb-remove {
+        position: absolute;
+        inset: auto 0 0 0;
+        background: rgba(255, 255, 255, .92);
+        font-size: .75rem;
+        padding: .2rem .4rem;
+        display: flex;
+        align-items: center;
+        gap: .3rem;
+    }
+}

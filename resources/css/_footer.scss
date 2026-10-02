@@ -1,0 +1,52 @@
+// =====================================================================
+// Подвал сайта
+// =====================================================================
+
+.site-footer {
+    margin-top: 3rem;
+    background: #1d2420;
+    color: rgba(255, 255, 255, .7);
+    padding: 3rem 0 1.5rem;
+    font-size: .875rem;
+
+    .brand,
+    .brand:hover {
+        color: #fff;
+    }
+
+    .brand-text small {
+        color: rgba(255, 255, 255, .5);
+    }
+
+    h6 {
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: .9rem;
+    }
+
+    a {
+        color: rgba(255, 255, 255, .7);
+
+        &:hover {
+            color: #fff;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li + li {
+            margin-top: .45rem;
+        }
+    }
+
+    .site-footer__bottom {
+        margin-top: 2.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid rgba(255, 255, 255, .1);
+        font-size: .8125rem;
+        color: rgba(255, 255, 255, .5);
+    }
+}

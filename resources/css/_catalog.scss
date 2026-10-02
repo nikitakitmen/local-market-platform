@@ -1,0 +1,400 @@
+// =====================================================================
+// Каталог, страница товара, страница производителя
+// =====================================================================
+
+.catalog-switch {
+    display: inline-flex;
+    padding: .3rem;
+    border-radius: .9rem;
+    background: #eceee9;
+    gap: .25rem;
+
+    a {
+        padding: .5rem 1.25rem;
+        border-radius: .7rem;
+        font-weight: 700;
+        font-size: .9rem;
+        color: $body-secondary-color;
+        transition: background-color .15s ease, color .15s ease, box-shadow .15s ease;
+
+        &:hover {
+            color: $headings-color;
+        }
+
+        &.active {
+            background: #fff;
+            color: $headings-color;
+            box-shadow: $box-shadow-sm;
+        }
+    }
+}
+
+.filters-card {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: var(--lm-radius);
+    padding: 1.25rem;
+    box-shadow: $box-shadow-sm;
+
+    .filter-group + .filter-group {
+        margin-top: 1.15rem;
+        padding-top: 1.15rem;
+        border-top: 1px solid var(--lm-border-light);
+    }
+
+    .filter-title {
+        font-size: .8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .04em;
+        color: var(--lm-muted);
+        margin-bottom: .6rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+        position: sticky;
+        top: calc(var(--lm-header-height) + 1rem);
+    }
+}
+
+.catalog-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+
+    .form-select {
+        width: auto;
+        min-width: 210px;
+    }
+}
+
+.filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-bottom: 1rem;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .3rem .4rem .3rem .75rem;
+    border-radius: 50rem;
+    background: var(--lm-primary-soft);
+    color: var(--lm-primary-dark);
+    font-size: .8125rem;
+    font-weight: 600;
+
+    a {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--lm-primary-dark);
+
+        &:hover {
+            background: rgba($primary, .15);
+        }
+    }
+}
+
+// Галерея на странице товара
+.product-gallery {
+    .product-gallery__main {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid var(--lm-border-light);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity .25s ease;
+
+            &.is-switching {
+                opacity: .3;
+            }
+        }
+    }
+
+    .product-gallery__thumbs {
+        display: flex;
+        gap: .6rem;
+        margin-top: .75rem;
+        overflow-x: auto;
+        padding-bottom: .25rem;
+    }
+
+    .product-gallery__thumb {
+        width: 76px;
+        height: 76px;
+        flex-shrink: 0;
+        border-radius: .75rem;
+        overflow: hidden;
+        border: 2px solid transparent;
+        padding: 0;
+        background: #fff;
+        opacity: .75;
+        transition: border-color .15s ease, opacity .15s ease;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.active {
+            border-color: var(--lm-primary);
+            opacity: 1;
+        }
+    }
+}
+
+.product-info {
+    .product-title {
+        font-size: clamp(1.45rem, 2.6vw, 2rem);
+        font-weight: 800;
+        letter-spacing: -.025em;
+    }
+
+    .product-price {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: -.02em;
+        color: $headings-color;
+
+        small {
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--lm-muted);
+        }
+    }
+}
+
+.buy-box {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: 1.1rem;
+    padding: 1.25rem;
+    box-shadow: $box-shadow-sm;
+}
+
+// Выбор варианта товара «чипсами»
+.variant-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+
+    input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        padding: .5rem .95rem;
+        border-radius: .75rem;
+        border: 1.5px solid var(--lm-border);
+        background: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: .9rem;
+        line-height: 1.25;
+        transition: border-color .15s ease, background-color .15s ease;
+
+        small {
+            font-weight: 600;
+            color: var(--lm-muted);
+        }
+
+        &:hover {
+            border-color: #c7d6cc;
+        }
+    }
+
+    input:checked + label {
+        border-color: var(--lm-primary);
+        background: var(--lm-primary-softer);
+
+        small {
+            color: var(--lm-primary-dark);
+        }
+    }
+
+    input:disabled + label {
+        opacity: .5;
+        cursor: not-allowed;
+        text-decoration: line-through;
+    }
+}
+
+.producer-mini {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: .85rem 1rem;
+    border-radius: .9rem;
+    background: #f6f7f4;
+    color: $body-color;
+    transition: background-color .15s ease;
+
+    &:hover {
+        background: var(--lm-primary-soft);
+        color: $body-color;
+    }
+}
+
+.spec-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: .45rem 1.25rem;
+    font-size: .9rem;
+    margin: 0;
+
+    dt {
+        font-weight: 500;
+        color: $body-secondary-color;
+    }
+
+    dd {
+        margin: 0;
+        font-weight: 600;
+    }
+}
+
+.description-text {
+    white-space: pre-line;
+    line-height: 1.7;
+}
+
+// Отзывы
+.review-item {
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--lm-border-light);
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    .review-item__head {
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        margin-bottom: .5rem;
+    }
+
+    .review-item__text {
+        white-space: pre-line;
+        margin: 0;
+    }
+
+    .review-reply {
+        margin-top: .75rem;
+        padding: .75rem 1rem;
+        border-radius: .8rem;
+        background: #f6f7f4;
+        border-left: 3px solid var(--lm-primary);
+        font-size: .9rem;
+    }
+}
+
+.rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .rating-summary__value {
+        font-size: 2.6rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -.03em;
+    }
+}
+
+.rating-bars {
+    .rating-bar {
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        font-size: .8rem;
+        color: $body-secondary-color;
+
+        .progress {
+            flex: 1;
+            height: .45rem;
+        }
+
+        .progress-bar {
+            background: #f2b01e;
+        }
+    }
+}
+
+// Шапка страницы производителя
+.producer-hero {
+    background: #fff;
+    border: 1px solid var(--lm-border-light);
+    border-radius: 1.4rem;
+    overflow: hidden;
+    box-shadow: $box-shadow-sm;
+
+    .producer-hero__cover {
+        height: 140px;
+        background:
+            radial-gradient(500px 160px at 20% 0%, rgba(255, 255, 255, .25), transparent 70%),
+            linear-gradient(120deg, #2f7a55, #3f8f69 55%, #6aa985);
+
+        @include media-breakpoint-down(md) {
+            height: 96px;
+        }
+    }
+
+    .producer-hero__body {
+        padding: 0 1.5rem 1.5rem;
+        margin-top: -3rem;
+
+        @include media-breakpoint-down(md) {
+            padding: 0 1rem 1.25rem;
+        }
+    }
+
+    .producer-logo-lg {
+        border: 4px solid #fff;
+        box-shadow: $box-shadow;
+        background: #fff;
+    }
+}
+
+.location-card {
+    height: 100%;
+    padding: 1rem 1.1rem;
+    border-radius: .9rem;
+    border: 1px solid var(--lm-border-light);
+    background: #fff;
+
+    .location-card__row {
+        display: flex;
+        gap: .5rem;
+        font-size: .85rem;
+        color: $body-secondary-color;
+        margin-top: .3rem;
+
+        i {
+            color: var(--lm-muted);
+        }
+    }
+}
